@@ -1,26 +1,89 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --navy: #0a1628;
+  --pearl: #f8f9ff;
+  --dental-teal: #00c9b1;
+  --soft-gold: #e8c97a;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-navy: #0a1628;
+  --color-pearl: #f8f9ff;
+  --color-dental-teal: #00c9b1;
+  --color-soft-gold: #e8c97a;
+  --font-sans: var(--font-dm-sans), ui-sans-serif, system-ui, sans-serif;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@utility font-display {
+  font-family: var(--font-cormorant), ui-serif, Georgia, serif;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+  }
+
+  body {
+    background-color: var(--pearl);
+    color: var(--navy);
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* Cross-hatch texture (low contrast) */
+.bg-crosshatch {
+  background-image: linear-gradient(
+      90deg,
+      rgba(10, 22, 40, 0.04) 1px,
+      transparent 1px
+    ),
+    linear-gradient(rgba(10, 22, 40, 0.04) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+/* Marquee: respect reduced motion via component + media */
+@keyframes marquee-scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee {
+  animation: marquee-scroll 45s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-marquee {
+    animation: none;
+  }
+}
+
+/* Teal glow pulse for primary CTA */
+@keyframes cta-glow {
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 rgba(0, 201, 177, 0.45);
+  }
+  50% {
+    box-shadow: 0 0 28px 6px rgba(0, 201, 177, 0.35);
+  }
+}
+
+.animate-cta-glow {
+  animation: cta-glow 2.4s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-cta-glow {
+    animation: none;
+  }
 }
