@@ -87,3 +87,45 @@
     animation: none;
   }
 }
+
+/* Gold pulse for contact submit (WhatsApp) */
+@keyframes submit-gold-pulse {
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 rgba(232, 201, 122, 0.55);
+  }
+  50% {
+    box-shadow: 0 0 24px 8px rgba(232, 201, 122, 0.35);
+  }
+}
+
+.animate-submit-gold-pulse {
+  animation: submit-gold-pulse 2.2s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-submit-gold-pulse {
+    animation: none;
+  }
+}
+
+/* Floating WhatsApp gentle hover motion */
+@keyframes wa-float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+.animate-wa-float {
+  animation: wa-float 2.8s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-wa-float {
+    animation: none;
+  }
+}

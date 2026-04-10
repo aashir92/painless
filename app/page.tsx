@@ -1,6 +1,7 @@
 import { HeroSection } from "@/components/hero/HeroSection";
 import { Footer } from "@/components/layout/Footer";
 import { MobileStickyCta } from "@/components/layout/MobileStickyCta";
+import { WhatsAppFloat } from "@/components/layout/WhatsAppFloat";
 import { SiteHeader } from "@/components/layout/SiteHeader";
 import { LocationSection } from "@/components/location/LocationSection";
 import { ServicesGrid } from "@/components/services/ServicesGrid";
@@ -28,6 +29,7 @@ export default function Home() {
       </main>
       <Footer />
       <MobileStickyCta />
+      <WhatsAppFloat />
     </>
   );
 }
