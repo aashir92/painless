@@ -39,9 +39,8 @@ export function TeamSection() {
             Expertise You Can Feel — Painless, Personal, Professional
           </h2>
           <p className="mt-3 max-w-2xl text-navy/70">
-            Real team photos will be displayed upon clinic submission. Until
-            then, meet our leaders by name, specialty, and the values we live
-            by.
+            Meet our leaders by name, specialty, and the values we stand for at
+            D-12 Markaz.
           </p>
         </Reveal>
 
@@ -49,27 +48,10 @@ export function TeamSection() {
           {doctors.map((d, i) => (
             <Reveal key={d.name} delay={i * 0.06}>
               <article className="flex h-full flex-col rounded-2xl border border-navy/10 bg-navy p-8 text-pearl shadow-xl shadow-navy/20">
-                <div className="flex flex-col items-center text-center">
-                  <div className="flex h-28 w-28 items-center justify-center rounded-full border-2 border-soft-gold bg-navy/80 ring-4 ring-soft-gold/20">
-                    <svg
-                      className="h-14 w-14 text-soft-gold/90"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="1.2"
-                      aria-hidden
-                    >
-                      <path d="M12 4a4 4 0 100 8 4 4 0 000-8zM4 20a8 8 0 0116 0" />
-                    </svg>
-                  </div>
-                  <p className="mt-4 rounded-full bg-dental-teal/15 px-3 py-1 text-xs font-bold uppercase tracking-wide text-dental-teal">
-                    Photo Coming Soon
-                  </p>
-                  <h3 className="mt-4 font-display text-2xl font-semibold">
-                    {d.name}
-                  </h3>
-                  <p className="text-sm font-medium text-dental-teal">{d.role}</p>
-                  <p className="mt-3 text-sm italic text-pearl/75">
+                <div className="border-b border-white/10 pb-6 text-center">
+                  <h3 className="font-display text-2xl font-semibold">{d.name}</h3>
+                  <p className="mt-1 text-sm font-medium text-dental-teal">{d.role}</p>
+                  <p className="mt-4 text-sm italic leading-relaxed text-pearl/80">
                     &ldquo;{d.quote}&rdquo;
                   </p>
                 </div>
@@ -83,12 +65,9 @@ export function TeamSection() {
                     </li>
                   ))}
                 </ul>
-                <p className="mt-6 text-center text-[11px] leading-relaxed text-pearl/45">
-                  Real team photos will be displayed upon clinic submission.
-                </p>
                 <Link
                   href="#contact"
-                  className="mt-6 text-center text-sm font-bold text-dental-teal hover:underline"
+                  className="mt-8 text-center text-sm font-bold text-dental-teal hover:underline"
                 >
                   Request a callback — available now
                 </Link>

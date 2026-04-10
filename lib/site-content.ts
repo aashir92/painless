@@ -1,43 +1,29 @@
 /**
- * Central image URLs and copy. Swap assets locally under /public/images for WebP + SEO filenames.
+ * Local assets in /public/images (AI-generated / photorealistic prompts).
+ * Paths are root-relative for next/image static export.
  */
 
 export const images = {
-  heroLeft:
-    "https://images.unsplash.com/photo-1606811841689-23dfddce3e95?w=1400&q=85&auto=format&fit=crop",
-  heroRight:
-    "https://images.unsplash.com/photo-1588776814546-daab30f310ce?w=900&q=85&auto=format&fit=crop",
-  statsBg:
-    "https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=2400&q=80&auto=format&fit=crop",
-  whyTreatmentRoom:
-    "https://images.unsplash.com/photo-1629909471839-f4d3c453efd3?w=2400&q=80&auto=format&fit=crop",
-  testimonialsBg:
-    "https://images.unsplash.com/photo-1521790797528-fe249c7bbbf6?w=2400&q=75&auto=format&fit=crop",
-  locationExterior:
-    "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1600&q=80&auto=format&fit=crop",
-  footerTooth:
-    "https://images.unsplash.com/photo-1600170311833-c02e81577c75?w=1600&q=80&auto=format&fit=crop",
+  heroLeft: "/images/hero-patient-dental-chair-smiling.png",
+  heroRight: "/images/hero-dental-instruments-tray-overhead.png",
+  statsBg: "/images/dental-clinic-waiting-interior-wide.png",
+  whyTreatmentRoom: "/images/dental-treatment-room-islamabad.png",
+  testimonialsBg: "/images/dental-reception-teal-accent.png",
+  locationExterior: "/images/clinic-exterior-daytime-islamabad.png",
+  footerTooth: "/images/footer-tooth-macro-navy.png",
   services: {
-    rootCanal:
-      "https://images.unsplash.com/photo-1606811971618-4486b456fca2?w=900&q=80&auto=format&fit=crop",
-    whitening:
-      "https://images.unsplash.com/photo-1598256989800-fe5f95da9787?w=900&q=80&auto=format&fit=crop",
-    implants:
-      "https://images.unsplash.com/photo-1624598866648-5fff7b8a11db?w=900&q=80&auto=format&fit=crop",
-    pediatric:
-      "https://images.unsplash.com/photo-1581594693702-fbdc51b2763b?w=900&q=80&auto=format&fit=crop",
-    preventive:
-      "https://images.unsplash.com/photo-1609840114035-3c981b782dfe?w=900&q=80&auto=format&fit=crop",
-    medical:
-      "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=900&q=80&auto=format&fit=crop",
+    rootCanal: "/images/root-canal-clinical-islamabad.png",
+    whitening: "/images/teeth-whitening-results-closeup.png",
+    implants: "/images/dental-implants-d12-islamabad.png",
+    pediatric: "/images/pediatric-dentistry-clinic-friendly.png",
+    preventive: "/images/preventive-care-dental-tools-flatlay.png",
+    medical: "/images/medical-consultation-calm-hands.png",
   },
   whyFeatures: {
-    painless:
-      "https://images.unsplash.com/photo-1606811841689-23dfddce3e95?w=800&q=80&auto=format&fit=crop",
-    hygienic:
-      "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=800&q=80&auto=format&fit=crop",
-    alwaysOpen:
-      "https://images.unsplash.com/photo-1514565131-fce080587e50?w=1200&q=80&auto=format&fit=crop",
+    painless: "/images/painless-relaxed-patient-serene.png",
+    expertDoctors: "/images/expert-doctor-back-dental-clinic.png",
+    hygienic: "/images/hygienic-modern-dental-islamabad.png",
+    alwaysOpen: "/images/clinic-evening-exterior-architectural.png",
   },
 } as const;
 
@@ -80,7 +66,7 @@ export const services = [
     emoji: "👶",
     blurb: "Gentle visits that help kids feel safe and smiling.",
     image: images.services.pediatric,
-    alt: "Pediatric dentistry happy child patient Islamabad",
+    alt: "Pediatric dentistry friendly operatory Islamabad clinic",
   },
   {
     id: "preventive",

@@ -1,14 +1,18 @@
 import { CLINIC, SITE_URL } from "@/lib/constants";
 import { images } from "@/lib/site-content";
 
+function absUrl(path: string) {
+  return new URL(path, SITE_URL).href;
+}
+
 const jsonLd = {
   "@context": "https://schema.org",
   "@type": "Dentist",
   name: CLINIC.name,
   image: [
-    images.heroLeft,
-    images.whyTreatmentRoom,
-    images.locationExterior,
+    absUrl(images.heroLeft),
+    absUrl(images.whyTreatmentRoom),
+    absUrl(images.locationExterior),
   ],
   url: SITE_URL,
   telephone: "+923469439585",

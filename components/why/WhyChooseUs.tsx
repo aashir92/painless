@@ -14,29 +14,27 @@ const blocks = [
     body: "Advanced anesthesia and gentle techniques — dentistry that respects your comfort.",
     image: images.whyFeatures.painless,
     alt: "Serene patient experience painless dental clinic Islamabad",
-    type: "image" as const,
   },
   {
     id: "experts",
     title: "Expert Doctors",
     body: "Dr. Tanveer & Dr. Adnan — Islamabad's finest, with transparent, ethical care.",
-    type: "placeholder" as const,
+    image: images.whyFeatures.expertDoctors,
+    alt: "Expert dental team in modern clinic corridor — professional from behind, Islamabad",
   },
   {
     id: "hygiene",
     title: "Hygienic & Modern",
     body: "Immaculately clean operatories and cutting-edge equipment you can trust.",
     image: images.whyFeatures.hygienic,
-    alt: "Clinical hygiene standards at D-12 Markaz dental clinic",
-    type: "image" as const,
+    alt: "Hygienic modern dental operatory sterile instruments tray Islamabad D-12 clinic",
   },
   {
     id: "open",
     title: "Always Open",
     body: "24/7, because dental pain doesn't keep office hours.",
     image: images.whyFeatures.alwaysOpen,
-    alt: "Evening exterior modern medical building architectural photography",
-    type: "image" as const,
+    alt: "Evening exterior modern medical building architectural photography Islamabad clinic",
   },
 ];
 
@@ -90,37 +88,16 @@ export function WhyChooseUs() {
                 }
                 className="overflow-hidden rounded-2xl border border-white/15 bg-white/10 shadow-lg shadow-black/20 backdrop-blur-md"
               >
-                {b.type === "image" && b.image && (
-                  <div className="relative aspect-[16/10]">
-                    <Image
-                      src={b.image}
-                      alt={b.alt}
-                      fill
-                      className="object-cover"
-                      sizes="(max-width: 640px) 100vw, 50vw"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-navy/80 to-transparent" />
-                  </div>
-                )}
-                {b.type === "placeholder" && (
-                  <div className="relative flex aspect-[16/10] flex-col items-center justify-center bg-navy p-6 text-center ring-2 ring-inset ring-soft-gold/50">
-                    <div className="flex h-24 w-24 items-center justify-center rounded-full border-2 border-soft-gold bg-navy/80">
-                      <svg
-                        className="h-12 w-12 text-soft-gold/90"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth="1.2"
-                        aria-hidden
-                      >
-                        <path d="M12 4a4 4 0 100 8 4 4 0 000-8zM4 20a8 8 0 0116 0" />
-                      </svg>
-                    </div>
-                    <p className="mt-4 text-sm font-bold uppercase tracking-wide text-dental-teal">
-                      Our Expert Team
-                    </p>
-                  </div>
-                )}
+                <div className="relative aspect-[16/10]">
+                  <Image
+                    src={b.image}
+                    alt={b.alt}
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 640px) 100vw, 50vw"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-navy/80 to-transparent" />
+                </div>
                 <div className="p-6">
                   <h3 className="font-display text-xl font-semibold sm:text-2xl">
                     {b.title}
