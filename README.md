@@ -25,21 +25,31 @@ Preview the export locally:
 npx serve out
 ```
 
-## Cloudflare Pages
+## Cloudflare Pages (Git integration)
 
-1. In the [Cloudflare dashboard](https://dash.cloudflare.com/) go to **Workers & Pages** → **Create** → **Pages** → **Connect to Git** and select this repository.
-2. **Framework preset:** None (or Static).
-3. **Build command:** `npm run build`
-4. **Build output directory:** `out`
-5. **Environment variables:** add `NEXT_PUBLIC_SITE_URL` to your production URL (e.g. `https://painless.pages.dev` or your custom domain).
+Use a **Pages** project (not a Workers-only deploy). After `npm run build`, Cloudflare should **publish the `out/` folder only**.
 
-Optional **CLI** deploy (after `npx wrangler login`):
+| Setting | Value |
+|--------|--------|
+| **Build command** | `npm run build` |
+| **Build output directory** | `out` |
+| **Deploy command** | *(leave **empty** — do not set this)* |
+
+**Important:** Do **not** run `npx wrangler deploy`. That targets **Workers** and will fail with “Missing entry-point” for this repo. There is **no** separate deploy step for static Pages: the platform uploads `out/` after a successful build.
+
+If your project currently has **Deploy command** set to `npx wrangler deploy`, **remove it**, save, and redeploy.
+
+**Environment variables:** set `NEXT_PUBLIC_SITE_URL` to your live URL (e.g. `https://<project>.pages.dev` or your custom domain) for correct Open Graph / canonical URLs.
+
+### Optional: deploy from your machine
+
+After `npx wrangler login`:
 
 ```bash
 npm run pages:deploy
 ```
 
-`wrangler.toml` sets `pages_build_output_dir = "out"` for Wrangler-based uploads.
+This runs `wrangler pages deploy out` (not `wrangler deploy`). Change `--project-name` in `package.json` if your Pages project name differs.
 
 ## Environment
 

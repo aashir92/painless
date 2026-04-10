@@ -1,6 +1,0 @@
-# Cloudflare Pages — static Next.js export (output: "export" → folder `out/`)
-# Dashboard: Build command = npm run build, Build output directory = out
-# CLI: npx wrangler pages deploy out --project-name=painless
-name = "painless"
-compatibility_date = "2025-04-01"
-pages_build_output_dir = "out"
