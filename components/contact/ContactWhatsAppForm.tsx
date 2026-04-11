@@ -11,11 +11,20 @@ function buildWhatsAppUrl(body: string) {
   return `https://wa.me/${WHATSAPP_WA_ME}?${params.toString()}`;
 }
 
+function formatPreferredSlot(date: string, time: string) {
+  if (!date && !time) return "—";
+  if (date && time) return `${date} at ${time}`;
+  if (date) return date;
+  return `Time: ${time}`;
+}
+
 export function ContactWhatsAppForm() {
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
   const [service, setService] = useState("");
-  const [dateTime, setDateTime] = useState("");
+  /** Split date/time — iOS Safari poorly supports `datetime-local` (often blank / invisible). */
+  const [prefDate, setPrefDate] = useState("");
+  const [prefTime, setPrefTime] = useState("");
   const [message, setMessage] = useState("");
 
   const onSubmit = useCallback(
@@ -27,18 +36,19 @@ export function ContactWhatsAppForm() {
         `*Name:* ${name.trim() || "—"}`,
         `*Phone:* ${phone.trim() || "—"}`,
         `*Service:* ${service || "—"}`,
-        `*Preferred date/time:* ${dateTime.trim() || "—"}`,
+        `*Preferred date/time:* ${formatPreferredSlot(prefDate, prefTime)}`,
         "",
         message.trim() ? `*Message:*\n${message.trim()}` : "",
       ].filter(Boolean);
       const url = buildWhatsAppUrl(lines.join("\n"));
       window.open(url, "_blank", "noopener,noreferrer");
     },
-    [name, phone, service, dateTime, message]
+    [name, phone, service, prefDate, prefTime, message]
   );
 
+  /* text-base = 16px — avoids iOS zoom; min-height helps native date/time pickers */
   const fieldClass =
-    "w-full border-0 border-b-2 border-navy/25 bg-transparent px-0 py-3 text-navy placeholder:text-navy/40 outline-none transition-[border-color,box-shadow] duration-200 focus-visible:border-soft-gold focus-visible:shadow-[0_1px_0_0_var(--soft-gold)] focus-visible:ring-0";
+    "w-full min-h-12 border-0 border-b-2 border-navy/25 bg-transparent px-0 py-3 text-base text-navy placeholder:text-navy/40 outline-none transition-[border-color,box-shadow] duration-200 focus-visible:border-soft-gold focus-visible:shadow-[0_1px_0_0_var(--soft-gold)] focus-visible:ring-0 [color-scheme:light]";
 
   return (
     <div
@@ -106,19 +116,45 @@ export function ContactWhatsAppForm() {
             ))}
           </select>
         </div>
-        <div>
-          <label htmlFor="contact-datetime" className="sr-only">
-            Preferred date and time
-          </label>
-          <input
-            id="contact-datetime"
-            name="datetime"
-            type="datetime-local"
-            value={dateTime}
-            onChange={(e) => setDateTime(e.target.value)}
-            className={fieldClass}
-          />
-        </div>
+        <fieldset className="space-y-3 border-0 p-0">
+          <legend className="text-sm font-semibold text-navy">
+            Preferred date &amp; time
+          </legend>
+          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 sm:gap-4">
+            <div>
+              <label
+                htmlFor="contact-date"
+                className="mb-1 block text-xs font-bold uppercase tracking-wide text-navy/55"
+              >
+                Date
+              </label>
+              <input
+                id="contact-date"
+                name="date"
+                type="date"
+                value={prefDate}
+                onChange={(e) => setPrefDate(e.target.value)}
+                className={fieldClass}
+              />
+            </div>
+            <div>
+              <label
+                htmlFor="contact-time"
+                className="mb-1 block text-xs font-bold uppercase tracking-wide text-navy/55"
+              >
+                Time
+              </label>
+              <input
+                id="contact-time"
+                name="time"
+                type="time"
+                value={prefTime}
+                onChange={(e) => setPrefTime(e.target.value)}
+                className={fieldClass}
+              />
+            </div>
+          </div>
+        </fieldset>
         <div>
           <label htmlFor="contact-message" className="sr-only">
             Message
